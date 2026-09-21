@@ -1631,26 +1631,23 @@ window.playerGear={
                 stats.criticalPower+=1
                 player.addEffect('hastePulserPassive')
             },
-            desc:'A guard bestowed with the heroic power of Cobalt Bee - Defender of the blue bees.<br><br>+300,000 capacity<br>x1.35 blue pollen<br>x1.4 convert rate<br>+20% instant blue conversion<br>x1.5 blue bomb pollen<br>+3 blue bee attack<br>+2 white bee attack<br>+100% critical power<br>+Passive: Haste Pulser',
+                        desc:'A guard bestowed with the heroic power of Cobalt Bee - Defender of the blue bees.<br><br>+300,000 capacity<br>x1.35 blue pollen<br>x1.4 convert rate<br>+20% instant blue conversion<br>x1.5 blue bomb pollen<br>+3 blue bee attack<br>+2 white bee attack<br>+100% critical power<br>+Passive: Haste Pulser',
             cost:['200000000 honey','100 blueExtract','15 stinger','50 enzymes','25 glitter'],
         },
     }
-}// existing playerGear code
-})();   // existing ending
 
-// Make every gear cost exactly 1 honey
-(function () {
-    function changeCosts(obj) {
+    // Change every gear cost to exactly 1 honey
+    function setGearCosts(obj) {
         if (!obj || typeof obj !== "object") return;
 
-        for (const key in obj) {
+        for (const key of Object.keys(obj)) {
             if (key === "cost" && Array.isArray(obj[key])) {
                 obj[key] = ["1 honey"];
-            } else if (typeof obj[key] === "object") {
-                changeCosts(obj[key]);
+            } else {
+                setGearCosts(obj[key]);
             }
         }
     }
 
-    changeCosts(window.playerGear);
+    setGearCosts(window.playerGear);
 })();
