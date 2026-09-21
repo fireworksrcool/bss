@@ -1635,9 +1635,7 @@ window.playerGear={
             cost:['200000000 honey','100 blueExtract','15 stinger','50 enzymes','25 glitter'],
         },
     }
-}
-})()
-    // existing playerGear code
+}// existing playerGear code
 })();   // existing ending
 
 // Make every gear cost exactly 1 honey
