@@ -1637,3 +1637,22 @@ window.playerGear={
     }
 }
 })()
+    // existing playerGear code
+})();   // existing ending
+
+// Make every gear cost exactly 1 honey
+(function () {
+    function changeCosts(obj) {
+        if (!obj || typeof obj !== "object") return;
+
+        for (const key in obj) {
+            if (key === "cost" && Array.isArray(obj[key])) {
+                obj[key] = ["1 honey"];
+            } else if (typeof obj[key] === "object") {
+                changeCosts(obj[key]);
+            }
+        }
+    }
+
+    changeCosts(window.playerGear);
+})();
